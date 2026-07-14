@@ -1,0 +1,23 @@
+﻿schemas:
+  jtbd_statement:
+    fields:
+      - name: when_context; type: string
+      - name: motivation; type: string
+      - name: expected_outcome; type: string
+      - name: evidence_source; type: string
+      - name: frequency; type: string; enum: [single_mention, multiple_mentions, pattern_across_users]
+      - name: confidence; type: float; range: [0.0, 1.0]
+  desired_outcome:
+    fields:
+      - name: direction; type: string; enum: [increase, decrease, eliminate, maintain, achieve]
+      - name: object; type: string
+      - name: context; type: string
+      - name: metric; type: string
+      - name: evidence_ref; type: string
+  opportunity_score:
+    fields:
+      - name: job_id; type: string
+      - name: weighted_score; type: float
+      - name: dimension_scores; type: object
+      - name: category; type: string; enum: [Core, Adjacent, Exploratory]
+      - name: evidence_strength; type: string; enum: [strong, moderate, weak]

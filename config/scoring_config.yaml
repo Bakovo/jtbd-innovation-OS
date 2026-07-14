@@ -1,0 +1,38 @@
+﻿scoring:
+  dimensions:
+    user_importance:
+      label: User Importance
+      weight: 1.5
+      range: [1, 10]
+    dissatisfaction:
+      label: Dissatisfaction
+      weight: 1.3
+      range: [1, 10]
+    frequency:
+      label: Frequency
+      weight: 1.2
+      range: [1, 10]
+    market_size:
+      label: Market Size
+      weight: 1.0
+      range: [1, 10]
+    business_value:
+      label: Business Value
+      weight: 1.0
+      range: [1, 10]
+    strategic_fit:
+      label: Strategic Fit
+      weight: 0.8
+      range: [1, 10]
+    technical_feasibility:
+      label: Technical Feasibility
+      weight: 0.7
+      range: [1, 10]
+  scoring_method: weighted_average
+  opportunity_categories:
+    - name: Core Opportunity
+      min_score: 7.0
+    - name: Adjacent Opportunity
+      min_score: 5.0
+    - name: Exploratory Opportunity
+      min_score: 0.0

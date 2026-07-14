@@ -1,0 +1,40 @@
+﻿# JTBD Innovation OS 4.0 - Workflow Configuration
+workflow:
+  version: 4.0
+  name: JTBD Innovation OS
+  entry_point: data_quality_agent
+  branching:
+    after_observation_agent:
+      switch_detected: switch_agent
+      no_switch: jtbd_agent
+  pipeline_order:
+    - data_quality_agent
+    - observation_agent
+    - persona_agent
+    - context_agent
+    - decision: detect_switch
+      branches:
+        - switch_agent
+        - jtbd_agent
+    - jtbd_agent
+    - job_map_agent
+    - need_agent
+    - outcome_agent
+    - evidence_validation_agent
+    - opportunity_agent
+    - product_translation_agent
+    - concept_agent
+    - validation_agent
+    - roadmap_agent
+    - gtm_agent
+  decision_rules:
+    detect_switch:
+      prompt: Based on observation agent output, does user data describe a behavioral transition between solutions?
+      criteria:
+        - User explicitly compares old vs new solution
+        - User describes a timeline of change
+        - User expresses dissatisfaction with current approach
+        - User mentions switching triggers or events
+      positive: switch_agent
+      negative: jtbd_agent
+      fallback: jtbd_agent
